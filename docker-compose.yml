@@ -1,9 +1,9 @@
-name: quest-compose
+name: bibliotek-compose
 
 services:
   mysql:
-    image: mysql:8.0.44-debian
-    container_name: quest-mysql
+    image: mysql:8.0.44
+    container_name: bibliotek-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
 
@@ -14,22 +14,18 @@ services:
 
     volumes:
       - db_data:/var/lib/mysql
-      - ./quest-init.sql:/docker-entrypoint-initdb.d/setup.sql
+      - ./bibliotek-init.sql:/docker-entrypoint-initdb.d/setup.sql
 
     networks:
-      - quest
+      - bibliotek
 
 
   boot:
-    # build:
-      # context: /workspace/SOPRA-250905-GIT/quest-boot
-      # context: ./quest-boot
-
-    image: ajc/quest:boot
-    container_name: quest-boot
+    image: ajc/bibliotek:boot
+    container_name: bibliotek-boot
 
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://quest-mysql/projet_quest
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql/bibiotek
       SPRING_DATASOURCE_PASSWORD: root
 
     depends_on:
@@ -37,26 +33,26 @@ services:
         condition: service_healthy
 
     networks:
-      - quest
+      - bibliotek
 
 
   angular:
-    image: ajc/quest:angular
-    container_name: quest-angular
+    image: ajc/bibliotek:angular
+    container_name: bibliotek-angular
 
     ports:
-      - 80:80
+      - 5000:80
 
     depends_on:
       - boot
 
     networks:
-      - quest
+      - bibliotek
 
 volumes:
   db_data:
-    name: quest-db-data
+    name: bibliotek-db-data
 
 networks:
-  quest:
-    name: quest
+  bibliotek:
+    name: bibliotek
