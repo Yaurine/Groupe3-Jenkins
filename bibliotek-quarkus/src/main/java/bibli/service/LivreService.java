@@ -44,7 +44,7 @@ public class LivreService {
         livre.setNom(request.getNom());
         livre.setResume(request.getResume());
         livre.setPublication(request.getPublication());
-        livre.setAuteur(request.getAuteur());
+        livre.setAuteur(request.getAuteur().getId());
         livre.setEditeur(request.getEditeur());
         livre.setCollection(request.getCollection());
 

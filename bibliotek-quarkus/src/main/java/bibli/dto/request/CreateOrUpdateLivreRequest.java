@@ -15,14 +15,14 @@ public class CreateOrUpdateLivreRequest {
     @NotBlank
     private LocalDate publication;
     @NotBlank
-    private Auteur auteur;
+    private int auteurId;
     @NotBlank
-    private Editeur editeur;
+    private int editeurId;
     @NotBlank
-    private Collection collection;
+    private int collectionId;
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public void setNom(String nom) {
@@ -30,7 +30,7 @@ public class CreateOrUpdateLivreRequest {
     }
 
     public String getResume() {
-        return resume;
+        return this.resume;
     }
 
     public void setResume(String resume) {
@@ -38,34 +38,35 @@ public class CreateOrUpdateLivreRequest {
     }
 
     public LocalDate getPublication() {
-        return publication;
+        return this.publication;
     }
 
     public void setPublication(LocalDate publication) {
         this.publication = publication;
     }
 
-    public Auteur getAuteur() {
-        return auteur;
+    public int getAuteurId() {
+        return this.auteurId;
     }
 
-    public void setAuteur(Auteur auteur) {
-        this.auteur = auteur;
+    public void setAuteurId(int auteurId) {
+        this.auteurId = auteurId;
     }
 
-    public Editeur getEditeur() {
-        return editeur;
+    public int getEditeurId() {
+        return this.editeurId;
     }
 
-    public void setEditeur(Editeur editeur) {
-        this.editeur = editeur;
+    public void setEditeurId(int editeurId) {
+        this.editeurId = editeurId;
     }
 
-    public Collection getCollection() {
-        return collection;
+    public int getCollectionId() {
+        return this.collectionId;
     }
 
-    public void setCollection(Collection collection) {
-        this.collection = collection;
+    public void setCollectionId(int collectionId) {
+        this.collectionId = collectionId;
     }
+
 }
