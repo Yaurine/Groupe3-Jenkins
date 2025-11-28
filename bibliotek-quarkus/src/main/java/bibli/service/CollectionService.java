@@ -12,6 +12,7 @@ import bibli.repo.CollectionRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
+import bibli.model.Collection;
 
 @ApplicationScoped
 public class CollectionService {
