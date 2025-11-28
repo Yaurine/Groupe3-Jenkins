@@ -19,8 +19,10 @@ import bibli.dto.request.CreateOrUpdateAuteurRequest;
 import bibli.dto.response.AuteurResponse;
 import bibli.model.Auteur;
 import bibli.service.AuteurService;
+import io.quarkus.security.Authenticated;
 
 @Path("/auteur")
+@Authenticated
 public class AuteurResource {
     private final static Logger log = LoggerFactory.getLogger(AuteurResource.class);
 
@@ -53,7 +55,7 @@ public class AuteurResource {
 
     @POST
     public int create(@Valid CreateOrUpdateAuteurRequest request) {
-        log.debug("Créer la l'auteur {}", request.getNom());
+        log.debug("Créer l'auteur {}", request.getNom());
 
         return this.service.create(request).getId();
     }

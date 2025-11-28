@@ -6,8 +6,9 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import bibli.dto.request.CreateOrUpdateEditeurRequest;
+import bibli.model.Editeur;
 import bibli.repo.EditeurRepository;
-import bibliotek.Editeur;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
@@ -21,21 +22,22 @@ public class EditeurService {
     public EditeurService(EditeurRepository repository) {
         this.repository = repository;
     }
+
     public Stream<Editeur> findAll() {
-        log.debug("Liste des produits");
+        log.debug("Liste des éditeurs");
 
         return this.repository.findAll().stream();
     }
 
     public Optional<Editeur> findById(int id) {
-        log.debug("Récupération de la matière {}", id);
+        log.debug("Récupération de l'éditeur' {}", id);
 
         return this.repository.findByIdOptional(id);
     }
 
     @Transactional
     public Editeur create(CreateOrUpdateEditeurRequest request) {
-        log.debug("Création de la matière {}", request.getLibelle());
+        log.debug("Création de l'éditeur' {}", request.getNom());
 
         Editeur editeur = new Editeur();
 
@@ -49,7 +51,7 @@ public class EditeurService {
 
     @Transactional
     public Editeur update(int id, CreateOrUpdateEditeurRequest request) {
-        log.debug("Mise à jour de la matière {}", id);
+        log.debug("Mise à jour de l'éditeur' {}", id);
 
         Editeur editeur = this.repository.findByIdOptional(id).orElseThrow(NotFoundException::new);
 
@@ -63,7 +65,7 @@ public class EditeurService {
 
     @Transactional
     public boolean deleteById(int id) {
-        log.debug("Suppression de la matière {}", id);
+        log.debug("Suppression de l'éditeur' {}", id);
 
         try {
             this.repository.deleteById(id);
@@ -71,7 +73,7 @@ public class EditeurService {
         }
 
         catch (Exception ex) {
-            log.error("Impossible de supprimer la matière {} : {}", id, ex.getMessage());
+            log.error("Impossible de supprimer l'éditeur' {} : {}", id, ex.getMessage());
             return false;
         }
     }

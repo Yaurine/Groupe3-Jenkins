@@ -8,47 +8,49 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Editeur")
-public class Editeur{
+@Table(name = "Editeur")
+public class Editeur {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-@Column(lenght =50, nullable = false)
-private String nom;
+    @Column(length = 50, nullable = false)
+    private String nom;
 
-@Column(lenght =50, nullable = false)
-private String pays;
+    @Column(length = 50, nullable = false)
+    private String pays;
 
-public Editeur(){}
+    public Editeur() {
+    }
 
-public Editeur(Integer id, String nom, String pays) {
-		this.id = id;
-		this.nom = nom;
+    public Editeur(Integer id, String nom, String pays) {
+        this.id = id;
+        this.nom = nom;
         this.pays = pays;
-	}
-    public Integer getId(){
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getNom(){
+    public String getNom() {
         return nom;
     }
 
-    public void setNom(String nom){
+    public void setNom(String nom) {
         this.nom = nom;
     }
 
-    public String getPays(){
+    public String getPays() {
         return pays;
     }
 
-    public void setPays(String pays){
+    public void setPays(String pays) {
         this.pays = pays;
     }
 }

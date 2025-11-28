@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 
 import bibli.dto.request.CreateOrUpdateLivreRequest;
 import bibli.model.Livre;
-import bibli.model.Collection;
 import bibli.repo.LivreRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
